@@ -156,7 +156,7 @@
       gap: 12px;
     }
 
-    /* Карточка Конкурса (в стиле скриншота) */
+    /* Карточка Конкурса */
     .contest-card {
       width: 100%;
       background: linear-gradient(135deg, #1b1429 0%, #100b1a 100%);
@@ -379,11 +379,30 @@
       padding: 6px;
     }
 
-    .roulette-item-img {
+    .roulette-item-img, .drop-item-img, .inventory-card-img {
       width: 40px;
       height: 40px;
       object-fit: contain;
       border-radius: 6px;
+    }
+
+    .no-bg-img {
+      mix-blend-mode: multiply;
+      filter: contrast(110%);
+    }
+
+    .roulette-coin-circle {
+      width: 40px;
+      height: 40px;
+      background: #f1c40f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      color: #000;
+      box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
     }
 
     .roulette-item-name {
@@ -470,13 +489,6 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    .drop-item-img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-      border-radius: 6px;
-    }
-
     .drop-item-info {
       display: flex;
       flex-direction: column;
@@ -558,7 +570,6 @@
     .inventory-card-img {
       width: 55px;
       height: 55px;
-      object-fit: contain;
     }
 
     .inventory-card-name {
@@ -819,7 +830,7 @@
       font-weight: 600;
     }
 
-    /* Нижняя навигация (теперь 4 кнопки) */
+    /* Нижняя навигация */
     .nav-bar {
       position: fixed;
       bottom: 0;
@@ -957,22 +968,6 @@
       font-family: 'Inter', sans-serif;
     }
 
-    .admin-textarea {
-      resize: vertical;
-      min-height: 60px;
-    }
-
-    .admin-select {
-      background: #08060b;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 10px;
-      color: #fff;
-      font-size: 13px;
-      outline: none;
-      width: 100%;
-    }
-
     .admin-action-btn {
       background: #2ecc71;
       border: none;
@@ -985,11 +980,90 @@
       font-size: 12px;
     }
 
+    /* Стили карточек промокодов в админке (как на фото) */
+    .admin-promo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 250px;
+      overflow-y: auto;
+      margin-top: 5px;
+    }
+
+    .admin-promo-card {
+      background: #0d0a14;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .admin-promo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .admin-promo-status {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .admin-promo-status.active {
+      background: rgba(46, 204, 113, 0.2);
+      color: #2ecc71;
+    }
+
+    .admin-promo-status.off {
+      background: rgba(231, 76, 60, 0.2);
+      color: #e74c3c;
+    }
+
+    .admin-promo-info {
+      font-size: 11px;
+      color: #b8b2d1;
+      font-weight: 600;
+    }
+
+    .admin-promo-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .promo-action-btn {
+      flex: 1;
+      background: #1e182c;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 6px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .promo-action-btn.del {
+      background: rgba(231, 76, 60, 0.2);
+      color: #e74c3c;
+      border: 1px solid rgba(231, 76, 60, 0.3);
+      flex: 0.4;
+    }
+
     .withdrawals-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      max-height: 200px;
+      max-height: 150px;
       overflow-y: auto;
       margin-top: 5px;
     }
@@ -1052,7 +1126,7 @@
           <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
         </div>
         <div class="top-icon-btn">
-          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6-3.6z"/></svg>
         </div>
       </div>
     </div>
@@ -1061,7 +1135,7 @@
     <div id="tabCases" class="tab-content active">
       <div class="cases-grid">
         <div class="case-card" onclick="openCaseScreen('Бесплатный')">
-          <div class="case-top-info"><span>4 предм.</span></div>
+          <div class="case-top-info"><span>5 предм.</span></div>
           <div class="case-img-box">
             <svg viewBox="0 0 100 80" width="70">
               <rect x="10" y="30" width="80" height="45" rx="8" fill="#1e4d2b" stroke="#2ecc71" stroke-width="3"/>
@@ -1137,36 +1211,9 @@
         <button class="skip-btn" id="skipBtn" onclick="skipRouletteSpin()">Пропустить ⏭</button>
       </div>
 
-      <div class="drop-list-title">Что может выпасть</div>
-      <div class="drop-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="drop-item">
-          <img src="https://i.postimg.cc/Qt3RDc9h/IMG-05b97066-8750-4bd3-975c-ea4898e095e4.webp" alt="La Secret" class="drop-item-img">
-          <div class="drop-item-info">
-            <span class="drop-item-name">La Secret</span>
-            <span class="drop-item-val">90 Ƀ</span>
-          </div>
-        </div>
-        <div class="drop-item">
-          <img src="https://i.postimg.cc/FF20HGF7/IMG-f946184e-fced-4798-aa5e-3b684ae60739.webp" alt="Ketchuru" class="drop-item-img">
-          <div class="drop-item-info">
-            <span class="drop-item-name">Ketchuru</span>
-            <span class="drop-item-val">51 Ƀ</span>
-          </div>
-        </div>
-        <div class="drop-item">
-          <img src="https://i.postimg.cc/50Q6cdCp/IMG-3bacb17b-3650-404d-9633-e488e8055e01.webp" alt="Cash or Card" class="drop-item-img">
-          <div class="drop-item-info">
-            <span class="drop-item-name">Cash or Card</span>
-            <span class="drop-item-val">43 Ƀ</span>
-          </div>
-        </div>
-        <div class="drop-item">
-          <img src="https://i.postimg.cc/L66NjxKg/1792271436159.png" alt="Lavadorito" class="drop-item-img">
-          <div class="drop-item-info">
-            <span class="drop-item-name">Lavadorito</span>
-            <span class="drop-item-val">31 Ƀ</span>
-          </div>
-        </div>
+      <div class="drop-list-title" id="dropListTitleText">Что может выпасть</div>
+      <div class="drop-grid" id="dropGridContainer" style="grid-template-columns: 1fr 1fr;">
+        <!-- Динамически заполняется -->
       </div>
     </div>
 
@@ -1214,7 +1261,7 @@
     <!-- ВКЛАДКА 3: КОНКУРСЫ -->
     <div id="tabContests" class="tab-content">
       <div id="contestContainer" style="width: 100%;">
-        <!-- Динамически загружается из базы -->
+        <!-- Загружается из базы -->
       </div>
     </div>
 
@@ -1250,7 +1297,7 @@
         <div class="promo-desc">Введи код: бонус на баланс, предмет в инвентарь или место в колесе</div>
         
         <div class="promo-form-row">
-          <input type="text" class="promo-input" id="promoInput" placeholder="389D281E">
+          <input type="text" class="promo-input" id="promoInput" placeholder="HALLOWEEN">
           <button class="promo-activate-btn" onclick="activatePromo()">Активировать</button>
         </div>
 
@@ -1262,7 +1309,7 @@
 
   </div>
 
-  <!-- Нижняя панель навигации (4 кнопки) -->
+  <!-- Нижняя панель навигации -->
   <div class="nav-bar" id="bottomNavBar">
     <button class="nav-item active" onclick="switchTab('cases', this)">
       <svg viewBox="0 0 24 24"><path d="M21 16.5C21 16.88 20.79 17.21 20.47 17.38L12.57 21.82C12.41 21.91 12.21 22 12 22C11.79 22 11.59 21.91 11.43 21.82L3.53 17.38C3.21 17.21 3 16.88 3 16.5V7.5C3 7.12 3.21 6.79 3.53 6.62L11.43 2.18C11.59 2.09 11.79 2 12 2C12.21 2 12.41 2.09 12.57 2.18L20.47 6.62C20.79 6.79 21 7.12 21 7.5V16.5Z"/></svg>
@@ -1353,13 +1400,25 @@
 
           <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 5px 0;">
           
+          <div style="font-size: 13px; font-weight: 800; color: #f39c12;">🏷️ Создать промокод:</div>
+          <input type="text" class="admin-input" id="newPromoCode" placeholder="Код (например: HALLOWEEN)">
+          <input type="number" class="admin-input" id="newPromoBonus" placeholder="Бонус в монетах (например: 50)">
+          <button class="admin-action-btn" style="background:#f1c40f; color:#000;" onclick="createAdminPromo()">Добавить промокод</button>
+
+          <div style="font-size: 13px; font-weight: 800; color: #f39c12; margin-top: 5px;">📋 Активные промокоды:</div>
+          <div class="admin-promo-list" id="adminPromoListContainer">
+            <div style="font-size: 11px; color: #7b73a5; text-align: center; padding: 10px;">Загрузка промокодов...</div>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 5px 0;">
+          
           <div style="font-size: 13px; font-weight: 800; color: #f39c12;">🏆 Настройка конкурса:</div>
-          <select class="admin-select" id="adminContestStatus">
+          <select class="admin-input" id="adminContestStatus">
             <option value="off">Конкурс ВЫКЛ (OFF)</option>
             <option value="on">Конкурс ВКЛ (ON)</option>
           </select>
           <input type="text" class="admin-input" id="adminContestTitle" placeholder="Название конкурса">
-          <textarea class="admin-textarea" id="adminContestDesc" placeholder="Описание / Условия конкурса"></textarea>
+          <textarea class="admin-input" id="adminContestDesc" placeholder="Описание / Условия конкурса" style="resize:vertical; min-height:60px;"></textarea>
           <input type="text" class="admin-input" id="adminContestImg" placeholder="Ссылка на фото (URL)">
           <button class="admin-action-btn" style="background:#f39c12; color:#000;" onclick="saveContestSettings()">Сохранить конкурс</button>
 
@@ -1373,7 +1432,6 @@
       `;
       document.body.appendChild(modal);
 
-      // Загружаем текущие настройки конкурса в инпуты админки
       db.ref('contest').once('value', (snapshot) => {
         const c = snapshot.val();
         if (c) {
@@ -1385,7 +1443,6 @@
       });
     }
 
-    // Слушаем изменения конкурса в реальном времени для всех пользователей
     db.ref('contest').on('value', (snapshot) => {
       const contest = snapshot.val();
       const container = document.getElementById('contestContainer');
@@ -1439,6 +1496,21 @@
       "Тако": 235,
       "Драгон": 562
     };
+
+    const standardItemsPool = [
+      { name: "La Secret", price: "90 Ƀ", val: 90, type: "img", content: "https://i.postimg.cc/Qt3RDc9h/IMG-05b97066-8750-4bd3-975c-ea4898e095e4.webp" },
+      { name: "Ketchuru", price: "51 Ƀ", val: 51, type: "img", content: "https://i.postimg.cc/FF20HGF7/IMG-f946184e-fced-4798-aa5e-3b684ae60739.webp" },
+      { name: "Cash or Card", price: "43 Ƀ", val: 43, type: "img", content: "https://i.postimg.cc/50Q6cdCp/IMG-3bacb17b-3650-404d-9633-e488e8055e01.webp" },
+      { name: "Lavadorito", price: "31 Ƀ", val: 31, type: "img", content: "https://i.postimg.cc/L66NjxKg/1792271436159.png" }
+    ];
+
+    const freeCaseItemsPool = [
+      { name: "+2 Монеты", price: "2 Ƀ", val: 2, type: "coin", addCoins: 2, coinText: "+2" },
+      { name: "+3 Монеты", price: "3 Ƀ", val: 3, type: "coin", addCoins: 3, coinText: "+3" },
+      { name: "+5 Монет", price: "5 Ƀ", val: 5, type: "coin", addCoins: 5, coinText: "+5" },
+      { name: "Chick Zombie", price: "45 Ƀ", val: 45, type: "img", content: "https://i.postimg.cc/W3zb1sZm/IMG-b107dc58-3d5f-46a9-8314-095952c5fd18.webp" },
+      { name: "Co Co Co Sahur", price: "55 Ƀ", val: 55, type: "img", content: "https://i.postimg.cc/6pTXZM3P/IMG-0a89a8c3-74d9-4b4c-b30c-50b7c0bf2a8d.jpg", hasWhiteBg: true }
+    ];
 
     let currentCoins = parseInt(localStorage.getItem('bm_coins_' + userId) || '0');
     let lastFreeOpenTime = parseInt(localStorage.getItem('bm_free_timer_' + userId) || '0');
@@ -1523,31 +1595,33 @@
       } catch(e) {}
     }
 
-    const itemsPool = [
-      { name: "La Secret", price: "90 Ƀ", val: 90, type: "img", content: "https://i.postimg.cc/Qt3RDc9h/IMG-05b97066-8750-4bd3-975c-ea4898e095e4.webp" },
-      { name: "Ketchuru", price: "51 Ƀ", val: 51, type: "img", content: "https://i.postimg.cc/FF20HGF7/IMG-f946184e-fced-4798-aa5e-3b684ae60739.webp" },
-      { name: "Cash or Card", price: "43 Ƀ", val: 43, type: "img", content: "https://i.postimg.cc/50Q6cdCp/IMG-3bacb17b-3650-404d-9633-e488e8055e01.webp" },
-      { name: "Lavadorito", price: "31 Ƀ", val: 31, type: "img", content: "https://i.postimg.cc/L66NjxKg/1792271436159.png" }
-    ];
-
     function buildRouletteTrack() {
       const track = document.getElementById('rouletteTrack');
       track.innerHTML = '';
       
       const winningIndex = 45;
-      const chosenItem = itemsPool[Math.floor(Math.random() * itemsPool.length)];
+      const currentPool = (activeCaseName === 'Бесплатный') ? freeCaseItemsPool : standardItemsPool;
+      const chosenItem = currentPool[Math.floor(Math.random() * currentPool.length)];
 
       winningItemData = {
         name: chosenItem.name,
         val: chosenItem.val,
         type: chosenItem.type,
-        content: chosenItem.content
+        addCoins: chosenItem.addCoins || 0,
+        content: chosenItem.content || '',
+        hasWhiteBg: chosenItem.hasWhiteBg || false
       };
 
       let html = '';
       for (let i = 0; i < 60; i++) {
-        const item = (i === winningIndex) ? chosenItem : itemsPool[Math.floor(Math.random() * itemsPool.length)];
-        let visualHTML = `<img src="${item.content}" class="roulette-item-img">`;
+        const item = (i === winningIndex) ? chosenItem : currentPool[Math.floor(Math.random() * currentPool.length)];
+        
+        let visualHTML = '';
+        if (item.type === 'coin') {
+          visualHTML = `<div class="roulette-coin-circle">${item.coinText}</div>`;
+        } else {
+          visualHTML = `<img src="${item.content}" class="roulette-item-img ${item.hasWhiteBg ? 'no-bg-img' : ''}">`;
+        }
 
         html += `
           <div class="roulette-item">
@@ -1565,6 +1639,57 @@
       
       finalTranslateX = -(winningIndex * itemWidth) + centerOffset;
       track.style.transform = 'translateX(0px)';
+    }
+
+    function updateDropGrid() {
+      const dropGrid = document.getElementById('dropGridContainer');
+      const dropTitle = document.getElementById('dropListTitleText');
+
+      if (activeCaseName === 'Бесплатный') {
+        dropTitle.innerText = "Что может выпасть в бесплатном кейсе";
+        dropGrid.innerHTML = `
+          <div class="drop-item">
+            <div style="width:38px; height:38px; background:#f1c40f; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; color:#000; font-size:14px;">+2</div>
+            <div class="drop-item-info"><span class="drop-item-name">+2 Монеты</span><span class="drop-item-val">2 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <div style="width:38px; height:38px; background:#f1c40f; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; color:#000; font-size:14px;">+3</div>
+            <div class="drop-item-info"><span class="drop-item-name">+3 Монеты</span><span class="drop-item-val">3 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <div style="width:38px; height:38px; background:#f1c40f; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; color:#000; font-size:14px;">+5</div>
+            <div class="drop-item-info"><span class="drop-item-name">+5 Монет</span><span class="drop-item-val">5 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <img src="https://i.postimg.cc/W3zb1sZm/IMG-b107dc58-3d5f-46a9-8314-095952c5fd18.webp" alt="Chick Zombie" class="drop-item-img">
+            <div class="drop-item-info"><span class="drop-item-name">Chick Zombie</span><span class="drop-item-val">45 Ƀ</span></div>
+          </div>
+          <div class="drop-item" style="grid-column: span 2;">
+            <img src="https://i.postimg.cc/6pTXZM3P/IMG-0a89a8c3-74d9-4b4c-b30c-50b7c0bf2a8d.jpg" alt="Co Co Co Sahur" class="drop-item-img no-bg-img">
+            <div class="drop-item-info"><span class="drop-item-name">Co Co Co Sahur</span><span class="drop-item-val">55 Ƀ</span></div>
+          </div>
+        `;
+      } else {
+        dropTitle.innerText = "Что может выпасть";
+        dropGrid.innerHTML = `
+          <div class="drop-item">
+            <img src="https://i.postimg.cc/Qt3RDc9h/IMG-05b97066-8750-4bd3-975c-ea4898e095e4.webp" alt="La Secret" class="drop-item-img">
+            <div class="drop-item-info"><span class="drop-item-name">La Secret</span><span class="drop-item-val">90 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <img src="https://i.postimg.cc/FF20HGF7/IMG-f946184e-fced-4798-aa5e-3b684ae60739.webp" alt="Ketchuru" class="drop-item-img">
+            <div class="drop-item-info"><span class="drop-item-name">Ketchuru</span><span class="drop-item-val">51 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <img src="https://i.postimg.cc/50Q6cdCp/IMG-3bacb17b-3650-404d-9633-e488e8055e01.webp" alt="Cash or Card" class="drop-item-img">
+            <div class="drop-item-info"><span class="drop-item-name">Cash or Card</span><span class="drop-item-val">43 Ƀ</span></div>
+          </div>
+          <div class="drop-item">
+            <img src="https://i.postimg.cc/L66NjxKg/1792271436159.png" alt="Lavadorito" class="drop-item-img">
+            <div class="drop-item-info"><span class="drop-item-name">Lavadorito</span><span class="drop-item-val">31 Ƀ</span></div>
+          </div>
+        `;
+      }
     }
 
     function openCaseScreen(caseName) {
@@ -1598,6 +1723,7 @@
         openBtn.innerText = `Открыть за ${cost} Ƀ`;
       }
 
+      updateDropGrid();
       buildRouletteTrack();
     }
 
@@ -1684,8 +1810,14 @@
       document.getElementById('skipBtn').style.display = 'none';
 
       if (winningItemData) {
-        document.getElementById('dropResultText').innerText = `Тебе выпало: ${winningItemData.name}! Добавлено в инвентарь.`;
-        addItemToInventory(winningItemData);
+        if (winningItemData.type === 'coin') {
+          currentCoins += winningItemData.addCoins;
+          document.getElementById('dropResultText').innerText = `Тебе выпало: ${winningItemData.name}! Зачислено на баланс.`;
+          syncToCloudAndLocal();
+        } else {
+          document.getElementById('dropResultText').innerText = `Тебе выпало: ${winningItemData.name}! Добавлено в инвентарь.`;
+          addItemToInventory(winningItemData);
+        }
       }
     }
 
@@ -1741,18 +1873,12 @@
         name: item.name,
         val: item.val,
         type: item.type,
-        content: item.content
+        content: item.content,
+        hasWhiteBg: item.hasWhiteBg || false
       };
 
       currentInventory.push(newItem);
       syncToCloudAndLocal();
-    }
-
-    function sellItemFromFirebase(itemId, price) {
-      currentInventory = currentInventory.filter(item => item.id !== itemId);
-      currentCoins += price;
-      syncToCloudAndLocal();
-      playClickSound();
     }
 
     function sellAllItems() {
@@ -1833,7 +1959,7 @@
 
       let html = '';
       inv.forEach(item => {
-        let visualHTML = `<img src="${item.content}" class="inventory-card-img">`;
+        let visualHTML = `<img src="${item.content}" class="inventory-card-img ${item.hasWhiteBg ? 'no-bg-img' : ''}">`;
 
         html += `
           <div class="inventory-card" onclick="selectItemForWithdraw(${JSON.stringify(item).replace(/"/g, '&quot;')})">
@@ -1870,6 +1996,7 @@
       if (modal) {
         modal.style.display = 'flex';
         loadAdminWithdrawals();
+        loadAdminPromos();
       } else {
         alert("У вас нет доступа к админ-панели!");
       }
@@ -1906,6 +2033,72 @@
       });
     }
 
+    function loadAdminPromos() {
+      const listEl = document.getElementById('adminPromoListContainer');
+      if (!listEl) return;
+
+      db.ref('promocodes').on('value', (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          listEl.innerHTML = `<div style="font-size: 11px; color: #7b73a5; text-align: center; padding: 10px;">Нет созданных промокодов</div>`;
+          return;
+        }
+
+        let html = '';
+        Object.keys(data).forEach(codeKey => {
+          const promo = data[codeKey];
+          const isActive = promo.status !== 'off';
+
+          html += `
+            <div class="admin-promo-card">
+              <div class="admin-promo-header">
+                <span>🎫 ${codeKey}</span>
+                <span class="admin-promo-status ${isActive ? 'active' : 'off'}">${isActive ? 'активен' : 'выключен'}</span>
+              </div>
+              <div class="admin-promo-info">Бонус: <b>+${promo.bonus} Ƀ</b><br>Использован раз: ${promo.uses || 0} • создан ${promo.createdAt || 'недавно'}</div>
+              <div class="admin-promo-actions">
+                <button class="promo-action-btn" onclick="togglePromoStatus('${codeKey}', '${promo.status}')">${isActive ? 'Выключить' : 'Включить'}</button>
+                <button class="promo-action-btn del" onclick="deletePromo('${codeKey}')">🗑</button>
+              </div>
+            </div>
+          `;
+        });
+        listEl.innerHTML = html;
+      });
+    }
+
+    function createAdminPromo() {
+      const code = document.getElementById('newPromoCode').value.trim().toUpperCase();
+      const bonus = parseInt(document.getElementById('newPromoBonus').value) || 0;
+
+      if (!code || bonus <= 0) {
+        alert("Введите корректный код и сумму бонуса!");
+        return;
+      }
+
+      db.ref('promocodes/' + code).set({
+        bonus: bonus,
+        status: 'on',
+        uses: 0,
+        createdAt: 'только что'
+      });
+
+      document.getElementById('newPromoCode').value = '';
+      document.getElementById('newPromoBonus').value = '';
+      alert(`Промокод ${code} успешно создан!`);
+    }
+
+    function togglePromoStatus(code, currentStatus) {
+      const newStatus = (currentStatus === 'off') ? 'on' : 'off';
+      db.ref('promocodes/' + code).update({ status: newStatus });
+    }
+
+    function deletePromo(code) {
+      if (confirm(`Удалить промокод ${code}?`)) {
+        db.ref('promocodes/' + code).remove();
+      }
+    }
+
     function addAdminCoins() {
       const amount = parseInt(document.getElementById('addCoinsInput').value) || 0;
       currentCoins += amount;
@@ -1915,13 +2108,13 @@
     }
 
     function adminGiveItem() {
-      addItemToInventory(itemsPool[0]);
+      addItemToInventory(standardItemsPool[0]);
       alert("Предмет La Secret успешно добавлен в инвентарь!");
       closeAdminModal();
     }
 
     function activatePromo() {
-      const code = document.getElementById('promoInput').value.trim();
+      const code = document.getElementById('promoInput').value.trim().toUpperCase();
       const statusBox = document.getElementById('promoStatus');
       
       if (code === "") {
@@ -1929,13 +2122,31 @@
         return;
       }
 
-      if (code.toUpperCase() === "MEOWL" || code.toUpperCase() === "BRAINROT" || code.toUpperCase() === "389D281E") {
-        currentCoins += 50;
-        syncToCloudAndLocal();
-        statusBox.innerText = "Успешно! Активировано (+50 монет)!";
-      } else {
-        statusBox.innerText = "Неверный промокод.";
-      }
+      db.ref('promocodes/' + code).once('value', (snapshot) => {
+        const promo = snapshot.val();
+
+        if (!promo || promo.status === 'off') {
+          statusBox.innerText = "Неверный или неактивный промокод.";
+          return;
+        }
+
+        // Проверяем, активировал ли пользователь этот код ранее
+        db.ref('users/' + userId + '/activatedPromos/' + code).once('value', (usedSnap) => {
+          if (usedSnap.exists()) {
+            statusBox.innerText = "Вы уже активировали этот промокод!";
+            return;
+          }
+
+          // Начисляем бонус
+          currentCoins += promo.bonus;
+          db.ref('users/' + userId + '/activatedPromos/' + code).set(true);
+          db.ref('promocodes/' + code + '/uses').set((promo.uses || 0) + 1);
+
+          syncToCloudAndLocal();
+          statusBox.innerText = `Успешно! Получено +${promo.bonus} Ƀ!`;
+          playWinSound();
+        });
+      });
     }
 
     initFirebaseSync();
